@@ -2,6 +2,7 @@ import { Card, Carousel, Col, Layout, Row, Tabs } from "antd";
 import { useState } from "react";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import { HomeStyle } from "./HomeStyle";
 const { Meta } = Card;
 const { Content } = Layout;
 // const contentStyle = {
@@ -25,7 +26,13 @@ const Home = () => {
 
   const bannerDiv = () => {
     return (
-      <Carousel loading={loading} autoplay>
+      <Carousel
+        style={{
+          "border-radius": "none !important",
+        }}
+        loading={loading}
+        autoplay
+      >
         <div>
           <img
             src="https://www.pea.co.th/portals/0/Images/Banner/2024/Banner.png" // ใส่ URL ของรูปภาพที่ต้องการ
@@ -234,45 +241,81 @@ PEA ร่วมแสดงความยินดีเนื่องใน�
   };
 
   return (
-    <Layout>
-      <Navbar />
-      <Content
+    <HomeStyle>
+      <Layout
         style={{
-          padding: "0 48px",
+          padding: "0 0",
+          margin: "0 0",
+          width: "100%",
         }}
       >
-        <Card loading={loading}>{bannerDiv()}</Card>
-        <Card>{cardDiv()}</Card>
-        <Card loading={loading}>
-          <Tabs
-            loading={loading}
-            defaultActiveKey="1"
-            type="card"
-            centered
+        <Content
+          style={{
+            padding: "0 0",
+            margin: "0 0",
+          }}
+        >
+          <Card
+            className="pea-card"
             style={{
-              width: "1200px",
-              margin: "auto",
+              background: "#151a1d",
             }}
-            items={dataTab.map((_, i) => {
-              const id = String(i + 1);
-              return {
-                label: dataTab[i]?.text,
-                key: id,
-                children: dataDetailTab(),
-              };
-            })}
-          />
-        </Card>
-        <Card>
-          <Card>{bannerDiv2()}</Card>
-        </Card>
-        <Card>{cardDiv2()}</Card>
-        <Card>
-          <Card>{bannerDiv()}</Card>
-        </Card>
-      </Content>
-      <Footer />
-    </Layout>
+            loading={loading}
+          >
+            <Navbar />
+
+            {bannerDiv()}
+          </Card>
+          <Card
+            className="pea-card"
+            style={{
+              background: "#ffffff",
+            }}
+          >
+            {cardDiv()}
+          </Card>
+          <Card
+            className="pea-card"
+            style={{
+              background: "#fafafa",
+            }}
+            loading={loading}
+          >
+            <Tabs
+              loading={loading}
+              defaultActiveKey="1"
+              type="card"
+              centered
+              style={{
+                width: "1200px",
+                margin: "auto",
+              }}
+              items={dataTab.map((_, i) => {
+                const id = String(i + 1);
+                return {
+                  label: dataTab[i]?.text,
+                  key: id,
+                  children: dataDetailTab(),
+                };
+              })}
+            />
+          </Card>
+          <Card
+            className="pea-card"
+            style={{
+              background: "#ffffff",
+            }}
+          >
+            <Card>{bannerDiv2()}</Card>
+          </Card>
+          <Card style={{}}>{cardDiv2()}</Card>
+          <Card>
+            <Card>{bannerDiv()}</Card>
+          </Card>
+        </Content>
+        <Footer />
+      </Layout>
+    </HomeStyle>
   );
 };
 export default Home;
