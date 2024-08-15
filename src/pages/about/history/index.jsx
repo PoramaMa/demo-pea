@@ -1,7 +1,9 @@
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
-import { Breadcrumb, Card, Carousel, Layout, Steps } from "antd";
+import { HomeOutlined, MailOutlined, PhoneOutlined, QuestionCircleOutlined, UserOutlined, WechatOutlined } from "@ant-design/icons";
+import { Breadcrumb, Button, Card, Carousel, Col, Layout, Row, Tabs } from "antd";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Navbar";
+import MyTabs from "./tab";
+
 const { Content } = Layout;
 const contentStyle = {
   height: "160px",
@@ -12,6 +14,9 @@ const contentStyle = {
 };
 
 const Home = () => {
+  const onChange = (key) => {
+    console.log(key);
+  };
   const bannerDiv = () => {
     return (
       <Carousel>
@@ -53,38 +58,13 @@ const Home = () => {
             ]}
           />
         </Card>
-        <Card>
-          <Steps
-            progressDot
-            current={1}
-            direction="vertical"
-            items={[
-              {
-                title: "Finished",
-                description: "This is a description. This is a description.",
-              },
-              {
-                title: "Finished",
-                description: "This is a description. This is a description.",
-              },
-              {
-                title: "In Progress",
-                description: "This is a description. This is a description.",
-              },
-              {
-                title: "Waiting",
-                description: "This is a description.",
-              },
-              {
-                title: "Waiting",
-                description: "This is a description.",
-              },
-            ]}
-          />
-        </Card>
-      </Content>
+        <Row justify="center" align="middle" style={{ marginTop: 40 }}>
+          <MyTabs />
+        </Row>
+        </Content>
       <Footer />
     </Layout>
   );
 };
 export default Home;
+
