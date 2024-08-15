@@ -1,5 +1,7 @@
 import { Card, Carousel, Col, Layout, Row, Tabs } from "antd";
 import { useState } from "react";
+import backImage from "../../assets/img/back2.jpg";
+import logo from "../../assets/img/back3.png";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import { HomeStyle } from "./HomeStyle";
@@ -16,6 +18,7 @@ const { Content } = Layout;
 const contentStyle = {
   width: "100%",
   objectFit: "cover", // ปรับขนาดรูปภาพให้พอดีกับ container
+  borderRadius: "8px",
 };
 
 const Home = () => {
@@ -26,13 +29,7 @@ const Home = () => {
 
   const bannerDiv = () => {
     return (
-      <Carousel
-        style={{
-          "border-radius": "none !important",
-        }}
-        loading={loading}
-        autoplay
-      >
+      <Carousel loading={loading} autoplay>
         <div>
           <img
             src="https://www.pea.co.th/portals/0/Images/Banner/2024/Banner.png" // ใส่ URL ของรูปภาพที่ต้องการ
@@ -86,6 +83,7 @@ const Home = () => {
 
   const imgCardStyle = {
     width: "100%",
+    borderRadius: "8px",
   };
 
   const cardDiv = () => {
@@ -231,6 +229,7 @@ PEA ร่วมแสดงความยินดีเนื่องใน�
               style={imgCardStyle}
             />
             <Meta
+              className="mt-3"
               style={{ textAlign: "center" }}
               title={dataCard2[index].text}
             />
@@ -242,34 +241,33 @@ PEA ร่วมแสดงความยินดีเนื่องใน�
 
   return (
     <HomeStyle>
-      <Layout
-        style={{
-          padding: "0 0",
-          margin: "0 0",
-          width: "100%",
-        }}
-      >
-        <Content
-          style={{
-            padding: "0 0",
-            margin: "0 0",
-          }}
-        >
+      <Layout>
+        <Content>
+          <Navbar />
           <Card
-            className="pea-card"
+            className="pea-card pea-card-banner"
             style={{
-              background: "#151a1d",
+              backgroundImage: `url(${backImage})`,
             }}
             loading={loading}
           >
-            <Navbar />
-
-            {bannerDiv()}
+            <img
+              src={logo}
+              alt=""
+              style={{
+                width: "500px",
+                height: "100%",
+                filter: "drop-shadow(0 0 20px rgba(133, 133, 133, 0.8))",
+                borderRadius: "10px",
+              }}
+            />
           </Card>
+
           <Card
             className="pea-card"
             style={{
-              background: "#ffffff",
+              background: "#fafafa",
+              display: "flex",
             }}
           >
             {cardDiv()}
@@ -277,7 +275,16 @@ PEA ร่วมแสดงความยินดีเนื่องใน�
           <Card
             className="pea-card"
             style={{
-              background: "#fafafa",
+              background: "#ffffff",
+            }}
+            loading={loading}
+          >
+            {bannerDiv()}
+          </Card>
+          <Card
+            className="pea-card"
+            style={{
+              background: "#f7f9fc",
             }}
             loading={loading}
           >
@@ -303,14 +310,27 @@ PEA ร่วมแสดงความยินดีเนื่องใน�
           <Card
             className="pea-card"
             style={{
-              background: "#ffffff",
+              background: "#fafafa",
             }}
           >
-            <Card>{bannerDiv2()}</Card>
+            {bannerDiv2()}
           </Card>
-          <Card style={{}}>{cardDiv2()}</Card>
-          <Card>
-            <Card>{bannerDiv()}</Card>
+          <Card
+            className="pea-card"
+            style={{
+              background: "#ffffff",
+              display: "flex",
+            }}
+          >
+            <Row style={{ margin: "auto" }}>{cardDiv2()}</Row>
+          </Card>
+          <Card
+            className="pea-card"
+            style={{
+              background: "##eef4ff",
+            }}
+          >
+            {bannerDiv()}
           </Card>
         </Content>
         <Footer />

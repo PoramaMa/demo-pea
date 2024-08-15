@@ -1,6 +1,7 @@
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Image, Layout, Menu, Space, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/img/logo3.png";
 
 const { Header } = Layout;
 const items1 = [
@@ -8,11 +9,7 @@ const items1 = [
     key: "/",
     label: (
       <Image.PreviewGroup>
-        <Image
-          preview={false}
-          width={200}
-          src="https://www.pea.co.th/Portals/0/New-pea-logo.png?ver=2020-12-07-134117-813"
-        />
+        <Image preview={false} width={200} src={logo} />
       </Image.PreviewGroup>
     ),
   },
@@ -77,7 +74,7 @@ const Navbar = () => {
               defaultSelectedKeys: ["3"],
             }}
           >
-            <Typography.Link style={{ margin: "20px" }}>
+            <Typography.Link style={{ margin: "20px", color: "#ffffff" }}>
               <Space>
                 {item.label}
                 <DownOutlined />
@@ -87,7 +84,10 @@ const Navbar = () => {
         );
       } else {
         return (
-          <Typography.Link style={{ margin: "20px" }} key={index}>
+          <Typography.Link
+            style={{ margin: "20px", color: "#ffffff" }}
+            key={index}
+          >
             <Space>{item.label}</Space>
           </Typography.Link>
         );
